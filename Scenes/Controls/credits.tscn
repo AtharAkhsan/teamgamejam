@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dca83wq7wqkip"]
+
+[ext_resource type="Script" uid="uid://t37g231sew16" path="res://teamgamejam/Scripts/credits.gd" id="1_r18jl"]
+[ext_resource type="AudioStream" uid="uid://rke1uwa6f76x" path="res://teamgamejam/Assets/Audio/click.wav" id="2_gryuy"]
+
+[node name="Credits" type="Control" unique_id=873131326]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r18jl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=965186310]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1532824541]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = -7.0
+offset_right = 262.0
+offset_bottom = 533.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 32
+bbcode_enabled = true
+text = "[b][i]La Luna[/i][/b]
+A Game by:
+
+[b]Game Artists:[/b]
+Hugo Daneindra Megantara
+Ghossan Gregar Handaru
+
+[b]Game Programmers:[/b]
+Athar Iftikhar Akhsan
+Muhammad Ahadan Fauzi
+
+[b]Music Producer:[/b]
+Hugo Daneindra Megaantara
+
+[b]Writer:[/b]
+Ivan Diamond Sitepu
+
+[b]Performing Artist:[/b]
+Sarah Isabelle
+
+[b]Assets:[/b]
+Modern Interiors by LimeZu (limezu.itch.io)"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Button_Back" type="Button" parent="." unique_id=47455339]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+offset_left = 35.0
+offset_top = 34.0
+offset_right = 135.0
+offset_bottom = 84.0
+text = "BACK"
+
+[node name="clickSFX" type="AudioStreamPlayer" parent="." unique_id=943589043]
+stream = ExtResource("2_gryuy")
+
+[connection signal="pressed" from="Button_Back" to="." method="_on_button_back_pressed"]

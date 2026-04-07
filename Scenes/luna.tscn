@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://76cuqdnl660q"]
+
+[ext_resource type="Script" uid="uid://7j3drdmwrhty" path="res://teamgamejam/Scripts/luna.gd" id="1_qixgp"]
+[ext_resource type="Texture2D" uid="uid://dsy8ilc28mtpv" path="res://teamgamejam/Assets/PIXEL BASE COBA 2.png" id="2_qixgp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v7rhq"]
+height = 32.0
+
+[node name="Luna" type="CharacterBody2D" unique_id=945570737]
+script = ExtResource("1_qixgp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=484328737]
+shape = SubResource("CapsuleShape2D_v7rhq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1559065770]
+texture = ExtResource("2_qixgp")

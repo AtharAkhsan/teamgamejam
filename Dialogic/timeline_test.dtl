@@ -1,0 +1,7 @@
+[style name="VisualNovel"]
+[background arg="res://teamgamejam/Assets/bulan.PNG" fade="0.0" wait="true"]
+Bulan
+Di tengah kawah sunyi, batu-batu berbentuk aneh berserakan di sekitar. Di antara bebatuan, Luna, makhluk Monstrodoid, muncul dari dalam tanah. Bentuknya lucu dan kenyal seperti mochi luar angkasa, dengan mata besar yang menggemaskan.
+[style name="BubbleStyle"]
+join Luna left
+Luna: Aku bosan
