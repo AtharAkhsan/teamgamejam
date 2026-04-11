@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bt52q5x51b2y2"
+path="res://.godot/imported/Egg Crack SCENE 04.mp3.wav-a56aeb2eaf669881c27cce25dbf36f48.sample"
+
+[deps]
+
+source_file="res://teamgamejam/Assets/Audio/SFX/Egg Crack SCENE 04.mp3.wav"
+dest_files=["res://.godot/imported/Egg Crack SCENE 04.mp3.wav-a56aeb2eaf669881c27cce25dbf36f48.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

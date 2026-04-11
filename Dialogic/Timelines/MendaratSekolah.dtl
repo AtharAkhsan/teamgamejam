@@ -1,0 +1,13 @@
+[style name="VisualNovel"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 11 - A.PNG" fade="1.0" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 11 - B.PNG" fade="1.0" wait="true"]
+(Benda apa itu...?)
+[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 12 - A.PNG" fade="1.0" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 12 - B.PNG" fade="1.0" wait="true"]
+[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+[background arg="#ffffffff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 13.PNG" fade="1.0" wait="true"]
+AKU JADI WNIIII
+[signal]

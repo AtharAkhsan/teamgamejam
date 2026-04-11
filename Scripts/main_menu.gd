@@ -13,7 +13,8 @@ func _process(delta: float) -> void:
 func _on_start_pressed() -> void:
 	click_sfx.play()
 	await click_sfx.finished
-	SceneTransition.change_scene("res://teamgamejam/Scenes/game_test.tscn")
+	MusicManager.stop_music()
+	Dialogic.start("Intro")
 
 func _on_exit_pressed() -> void:
 	click_sfx.play()	

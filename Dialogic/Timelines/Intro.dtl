@@ -1,0 +1,48 @@
+[style name="VisualNovel"]
+audio music "res://teamgamejam/Assets/Audio/Songs/Cutscene 1.mp3" [volume="6.0"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 01 - A.PNG" fade="1.0" wait="true"]
+Bulan...
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 01 - B.PNG" fade="1.0" wait="true"]
+Konon katanya hidup makhluk yang tidak dapat dibayangkan manusia...
+[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 02 - A.PNG" fade="1.0" wait="true"]
+Sedikit yang mereka tahu bahwa di bulan, ada banyak spesies.
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 02 - B.PNG" fade="1.0" wait="true"]
+Salah satunya...
+[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 03 - A.PNG" fade="1.0" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 03 - B.PNG" fade="1.0" wait="true"]
+audio "res://teamgamejam/Assets/Audio/SFX/Egg Crack SCENE 04.mp3.wav" [volume="-10.0" bus=""]
+Meskipun jauh dan berbahaya, banyak makhluk bulan, bahkan yang baru lahir...
+Tertarik dengan bumi...
+[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 04 - A.PNG" fade="1.0" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 05 - A.png" fade="1.0" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 05 - B.PNG" fade="1.0" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 05 - A.png" fade="1.0" wait="true"]
+audio "res://teamgamejam/Assets/Audio/SFX/SPARKLE SCENE 05.mp3.wav" [volume="-10.0"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 05 - C.png" fade="1.0" wait="true"]
+Cahaya biru memantul dari Bumi...
+[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 06.PNG" fade="1.0" wait="true"]
+Ini lulu, dan dia sangat penasaran dengan bumi dan cahaya berkilau itu.
+[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+audio "res://teamgamejam/Assets/Audio/SFX/METEOR SCENE 07.mp3.wav" [volume="0.0"]
+[wait time="2.0"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 07.PNG" fade="1.0" wait="true"]
+wrrr... (Suara meteor jatuh)
+[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 08 - A.PNG" fade="1.0" wait="true"]
+audio "res://teamgamejam/Assets/Audio/SFX/SCENE 9 LANTAI PECAH.mp3.wav" [volume="-10.0"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 09.PNG" fade="1.0" wait="true"]
+[background arg="#000000ff" fade="1.5" wait="true"]
+[background arg="res://teamgamejam/Assets/Pictures/SCENE 10.PNG" fade="1.0" wait="true"]
+ADA ALIENN!!! KEJAR DIAA!!!!!!!!!
+[signal arg="Intro_Ends"]

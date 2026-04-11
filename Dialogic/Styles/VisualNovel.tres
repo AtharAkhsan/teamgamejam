@@ -15,6 +15,9 @@
 [sub_resource type="Resource" id="Resource_doejt"]
 script = ExtResource("2_3o3xa")
 scene = ExtResource("1_7pwvj")
+overrides = {
+"global_font": "\"res://teamgamejam/Assets/Fonts/PIXEARG_.TTF\""
+}
 
 [sub_resource type="Resource" id="Resource_3e7tg"]
 script = ExtResource("2_3o3xa")
@@ -31,6 +34,22 @@ scene = ExtResource("5_8k0rn")
 [sub_resource type="Resource" id="Resource_3s3vp"]
 script = ExtResource("2_3o3xa")
 scene = ExtResource("6_qxavu")
+overrides = {
+"bold_font": "\"res://teamgamejam/Assets/Fonts/PIXEAB__.TTF\"",
+"box_color_custom": "Color(1, 1, 1, 1)",
+"box_color_use_global": "false",
+"box_margin_bottom": "23.0",
+"box_panel": "\"res://teamgamejam/Dialogic/Styles/textfield.tres\"",
+"box_size": "Vector2(800, 150)",
+"name_label_alignment": "1",
+"next_indicator_position_offset": "Vector2(-40, -45)",
+"next_indicator_size": "Vector2(75, 75)",
+"next_indicator_texture": "\"res://teamgamejam/Assets/Indicator.png\"",
+"normal_font": "\"res://teamgamejam/Assets/Fonts/PIXEARG_.TTF\"",
+"text_custom_color": "Color(0, 0, 0, 1)",
+"text_use_global_color": "false",
+"text_use_global_font": "false"
+}
 
 [sub_resource type="Resource" id="Resource_0dv6j"]
 script = ExtResource("2_3o3xa")

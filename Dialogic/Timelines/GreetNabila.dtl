@@ -1,0 +1,11 @@
+[style name="VisualNovel"]
+join Lulu center [animation="Fade In"]
+join Nabila (Default) center [animation="Fade In"]
+Nabila: Y-ya?
+- Halo bakar apa?
+Nabila (Ew): Hah? Maksudnya?
+Lulu: Ehhh.......
+Lulu: Aku mau ke toilet dulu deh
+leave Nabila
+Lulu: Sepertinya aku harus belajar bahasa manusia...
+[signal arg="exit_nabila"]

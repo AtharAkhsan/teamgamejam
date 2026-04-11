@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c0psw6ai2qrul"]
+
+[ext_resource type="Script" uid="uid://drwwb0xld5gnu" path="res://scripts/Minigame_2_luna.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://jbff626u5ogh" path="res://assets/Minigame_2_lulu_dikejar.png" id="2_wn5x5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gjum"]
+atlas = ExtResource("2_wn5x5")
+region = Rect2(0, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwqnb"]
+atlas = ExtResource("2_wn5x5")
+region = Rect2(16, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsouy"]
+atlas = ExtResource("2_wn5x5")
+region = Rect2(32, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0b6x"]
+atlas = ExtResource("2_wn5x5")
+region = Rect2(48, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jtr5"]
+atlas = ExtResource("2_wn5x5")
+region = Rect2(64, 0, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxl1i"]
+atlas = ExtResource("2_wn5x5")
+region = Rect2(80, 0, 16, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_viqqh"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gjum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwqnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsouy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0b6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jtr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxl1i")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="SubResource_1"]
+size = Vector2(13, 22)
+
+[node name="Luna" type="Area2D" unique_id=2003584952]
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1619182200]
+sprite_frames = SubResource("SpriteFrames_viqqh")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.46301517
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1166391177]
+position = Vector2(-0.5, 5)
+shape = SubResource("SubResource_1")

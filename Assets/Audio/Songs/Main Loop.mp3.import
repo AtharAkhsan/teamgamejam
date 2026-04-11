@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c5ic32mkpb72t"
+path="res://.godot/imported/Main Loop.mp3-5dc32b322d3079a5b2f273e3b685835f.mp3str"
+
+[deps]
+
+source_file="res://teamgamejam/Assets/Audio/Songs/Main Loop.mp3"
+dest_files=["res://.godot/imported/Main Loop.mp3-5dc32b322d3079a5b2f273e3b685835f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

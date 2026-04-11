@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d20278s3smov4"
+path="res://.godot/imported/SPARKLE SCENE 05.mp3.wav-9ee5acb311f7bcdb37036a093a4bed48.sample"
+
+[deps]
+
+source_file="res://teamgamejam/Assets/Audio/SFX/SPARKLE SCENE 05.mp3.wav"
+dest_files=["res://.godot/imported/SPARKLE SCENE 05.mp3.wav-9ee5acb311f7bcdb37036a093a4bed48.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

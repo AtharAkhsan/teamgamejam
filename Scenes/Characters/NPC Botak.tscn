@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://b4t8qmeohqjor"]
+
+[ext_resource type="Script" uid="uid://cb8tdx8sptcv6" path="res://teamgamejam/Scripts/NPC Botak.gd" id="1_vd16p"]
+[ext_resource type="Texture2D" uid="uid://cps0cvecx1upb" path="res://teamgamejam/Assets/Characters/NPCs/cowo_sma_botak_idle.png" id="2_2ybi3"]
+[ext_resource type="Texture2D" uid="uid://3yfr5qhg6m3" path="res://teamgamejam/Assets/Characters/Shadow.png" id="3_iertu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd16p"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ybi3"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iertu"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(224, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fw3o"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(240, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a61d"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(256, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jeici"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(272, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obpx2"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybykg"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt2ip"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10prw"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duo7l"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_navjt"]
+atlas = ExtResource("2_2ybi3")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16dn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd16p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ybi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iertu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fw3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a61d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jeici")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obpx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybykg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt2ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10prw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duo7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_navjt")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iwhjt"]
+radius = 7.0
+height = 16.0
+
+[node name="NPC Botak" type="CharacterBody2D" unique_id=419100411]
+collision_mask = 2
+script = ExtResource("1_vd16p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=626396472]
+sprite_frames = SubResource("SpriteFrames_16dn0")
+animation = &"idle_right"
+autoplay = "idle_right"
+
+[node name="ShadowSprite" type="Sprite2D" parent="AnimatedSprite2D" unique_id=1969591237]
+modulate = Color(0.29954752, 0.29954743, 0.29954743, 1)
+show_behind_parent = true
+position = Vector2(0, 15)
+scale = Vector2(0.41601565, 0.41601565)
+texture = ExtResource("3_iertu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131252653]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_iwhjt")

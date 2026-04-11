@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c67agmcq4kmj7"
+path="res://.godot/imported/Main menu.mp3-ddef5bd3698d3d99bc33c8430d14c8ee.mp3str"
+
+[deps]
+
+source_file="res://teamgamejam/Assets/Audio/Songs/Main menu.mp3"
+dest_files=["res://.godot/imported/Main menu.mp3-ddef5bd3698d3d99bc33c8430d14c8ee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

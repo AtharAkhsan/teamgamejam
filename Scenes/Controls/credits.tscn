@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://t37g231sew16" path="res://teamgamejam/Scripts/credits.gd" id="1_r18jl"]
 [ext_resource type="AudioStream" uid="uid://rke1uwa6f76x" path="res://teamgamejam/Assets/Audio/click.wav" id="2_gryuy"]
+[ext_resource type="Texture2D" uid="uid://c5jupa6hy5ues" path="res://teamgamejam/Assets/Pictures/SCENE 10.PNG" id="2_ixk3d"]
+[ext_resource type="FontFile" uid="uid://c6gbmx5jpcwkp" path="res://teamgamejam/Assets/Fonts/PIXEARG_.TTF" id="3_bqoml"]
+[ext_resource type="FontFile" uid="uid://sne5ixlr1elq" path="res://teamgamejam/Assets/Fonts/PIXEAB__.TTF" id="4_ixk3d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bqoml"]
+texture = ExtResource("2_ixk3d")
 
 [node name="Credits" type="Control" unique_id=873131326]
 layout_mode = 3
@@ -12,7 +18,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r18jl")
 
+[node name="Panel" type="Panel" parent="." unique_id=1442286895]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bqoml")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=965186310]
+modulate = Color(0, 0, 0, 0.62352943)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,17 +44,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -247.0
-offset_top = -7.0
-offset_right = 262.0
-offset_bottom = 533.0
+offset_left = -508.0
+offset_top = 13.0
+offset_right = 511.0
+offset_bottom = 981.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 16
+theme_override_fonts/normal_font = ExtResource("3_bqoml")
+theme_override_fonts/bold_font = ExtResource("4_ixk3d")
+theme_override_fonts/bold_italics_font = ExtResource("4_ixk3d")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
 theme_override_font_sizes/bold_italics_font_size = 32
 bbcode_enabled = true
-text = "[b][i]La Luna[/i][/b]
+text = "[b][i]WNB to WNI[/i][/b]
 A Game by:
 
 [b]Game Artists:[/b]
@@ -55,22 +74,24 @@ Hugo Daneindra Megaantara
 [b]Writer:[/b]
 Ivan Diamond Sitepu
 
-[b]Performing Artist:[/b]
+[b]Special Thanks:[/b]
 Sarah Isabelle
 
 [b]Assets:[/b]
-Modern Interiors by LimeZu (limezu.itch.io)"
+limezu.itch.io"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
 [node name="Button_Back" type="Button" parent="." unique_id=47455339]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(250, 125)
 layout_mode = 1
 offset_left = 35.0
 offset_top = 34.0
-offset_right = 135.0
-offset_bottom = 84.0
+offset_right = 235.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("3_bqoml")
+theme_override_font_sizes/font_size = 32
 text = "BACK"
 
 [node name="clickSFX" type="AudioStreamPlayer" parent="." unique_id=943589043]

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://cppdnjuk8tv6e"]
+
+[ext_resource type="Texture2D" uid="uid://cvrqxcdcmkurw" path="res://teamgamejam/Assets/Characters/NPCs/Nabila.png" id="1_fmyie"]
+[ext_resource type="Script" uid="uid://cpc1njkumxisv" path="res://teamgamejam/Scenes/Characters/NPC Nabila.gd" id="1_ymmtw"]
+[ext_resource type="Texture2D" uid="uid://3yfr5qhg6m3" path="res://teamgamejam/Assets/Characters/Shadow.png" id="2_ymmtw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ffxk"]
+atlas = ExtResource("1_fmyie")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koiwg"]
+atlas = ExtResource("1_fmyie")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkxlv"]
+atlas = ExtResource("1_fmyie")
+region = Rect2(224, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83b4c"]
+atlas = ExtResource("1_fmyie")
+region = Rect2(240, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_effjy"]
+atlas = ExtResource("1_fmyie")
+region = Rect2(256, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwhln"]
+atlas = ExtResource("1_fmyie")
+region = Rect2(272, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nybq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ffxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koiwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkxlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83b4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_effjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwhln")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m684k"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5id86"]
+
+[node name="NPC Nabila" type="CharacterBody2D" unique_id=988197672]
+script = ExtResource("1_ymmtw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166329529]
+sprite_frames = SubResource("SpriteFrames_4nybq")
+animation = &"idle_left"
+autoplay = "idle_left"
+frame_progress = 0.8549963
+
+[node name="ShadowSprite" type="Sprite2D" parent="AnimatedSprite2D" unique_id=619547691]
+modulate = Color(0.29954752, 0.29954743, 0.29954743, 1)
+show_behind_parent = true
+position = Vector2(0, 15)
+scale = Vector2(0.41601565, 0.41601565)
+texture = ExtResource("2_ymmtw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1302778831]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_m684k")
+
+[node name="chatDetection" type="Area2D" parent="." unique_id=1553585456]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chatDetection" unique_id=1713582121]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_5id86")
+
+[connection signal="area_shape_exited" from="chatDetection" to="." method="_on_chat_detection_area_shape_exited"]
+[connection signal="body_entered" from="chatDetection" to="." method="_on_chat_detection_body_entered"]
