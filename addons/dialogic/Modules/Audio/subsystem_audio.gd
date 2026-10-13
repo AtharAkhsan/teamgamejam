@@ -161,7 +161,12 @@ func update_audio(channel_name:= "", path := "", settings_overrides := {}) -> vo
 		new_player.volume_db = audio_settings.volume
 
 	## Audio Bus
-	new_player.bus = audio_settings.audio_bus
+	# PATCH (Luna): an empty/unknown bus name breaks web exports ("invalid bus index -1"
+	# in the web audio sample code, which freezes the game). Fall back to Master.
+	if AudioServer.get_bus_index(audio_settings.audio_bus) == -1:
+		new_player.bus = &"Master"
+	else:
+		new_player.bus = audio_settings.audio_bus
 
 	## Loop
 	if "loop" in new_player.stream:

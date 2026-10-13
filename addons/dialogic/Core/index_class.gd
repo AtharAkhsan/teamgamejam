@@ -79,7 +79,11 @@ func list_special_resources(subdir:='', extension:="") -> Dictionary:
 	var dict := {}
 	for i in list_dir(subdir):
 		if extension.is_empty() or i.ends_with(extension) or (extension == ".gd" and i.ends_with(".gdc")):
-			dict[DialogicUtil.pretty_name(i).to_lower()] = {"path":i}
+			# PATCH (Luna): exported builds list scripts as .gdc, but timelines and defaults
+			# refer to the .gd path (which still loads via remap). Store the .gd path so
+			# lookups by path match ("Unable to find BackgroundTransition at path ...").
+			var path: String = i.trim_suffix(".gdc") + ".gd" if i.ends_with(".gdc") else i
+			dict[DialogicUtil.pretty_name(i).to_lower()] = {"path":path}
 	return dict
 
 
