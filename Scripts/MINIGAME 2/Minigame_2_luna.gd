@@ -9,31 +9,9 @@ var target_y: float = 430.0
 var is_invincible: bool = false
 var is_active: bool = true
 var invincible_timer: float = 0.0
-var base_scale: float = 1.0
 
 const INVINCIBLE_DURATION := 1.5
 const LANE_SWITCH_SPEED := 12.0
-const SPRITE_TARGET_HEIGHT := 80.0
-
-
-func _load_tex(path: String) -> ImageTexture:
-	var abs_path = ProjectSettings.globalize_path(path)
-	var file = FileAccess.open(abs_path, FileAccess.READ)
-	if not file:
-		return null
-	var data = file.get_buffer(file.get_length())
-	file.close()
-	var img = Image.new()
-	var err: int = ERR_FILE_CORRUPT
-	if data.size() >= 2 and data[0] == 0xFF and data[1] == 0xD8:
-		err = img.load_jpg_from_buffer(data)
-	elif data.size() >= 4 and data[0] == 0x89 and data[1] == 0x50:
-		err = img.load_png_from_buffer(data)
-	elif data.size() >= 4 and data[0] == 0x52 and data[1] == 0x49:
-		err = img.load_webp_from_buffer(data)
-	if err != OK:
-		return null
-	return ImageTexture.create_from_image(img)
 
 
 func _ready():
@@ -46,12 +24,12 @@ func _ready():
 
 func _process(delta: float):
 	if is_active:
-		if (Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("ui_up")) and current_lane > 0:
+		if Input.is_action_just_pressed("up") and current_lane > 0:
 			current_lane -= 1
 			target_y = lane_positions[current_lane]
 			lane_changed.emit()
 
-		if (Input.is_action_just_pressed("move_down") or Input.is_action_just_pressed("ui_down")) and current_lane < 2:
+		if Input.is_action_just_pressed("down") and current_lane < 2:
 			current_lane += 1
 			target_y = lane_positions[current_lane]
 			lane_changed.emit()

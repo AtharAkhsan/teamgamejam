@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://c4rin2c3jxlv7"]
 
+[ext_resource type="Script" uid="uid://durbt8ryy3aef" path="res://teamgamejam/Scripts/to_do_list_ui.gd" id="1_todo"]
+[ext_resource type="Texture2D" uid="uid://bhe3ilgbd6qsx" path="res://teamgamejam/Assets/todo.png" id="2_paper"]
+
 [node name="ToDoListUI" type="Control" unique_id=1464974467]
 layout_mode = 3
 anchors_preset = 15
@@ -7,28 +10,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_todo")
 
-[node name="Panel" type="Panel" parent="." unique_id=1677326325]
+[node name="Paper" type="TextureRect" parent="." unique_id=1677326325]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -384.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 548.0
+grow_horizontal = 0
+texture = ExtResource("2_paper")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=227203024]
+[node name="TaskList" type="VBoxContainer" parent="Paper" unique_id=1513880037]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="To-DoList" type="Label" parent="Panel/VBoxContainer" unique_id=1351478958]
-layout_mode = 2
-
-[node name="TaskList" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=1513880037]
-layout_mode = 2
+offset_left = 40.0
+offset_top = 130.0
+offset_right = 304.0
+offset_bottom = 450.0
+theme_override_constants/separation = 12

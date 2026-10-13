@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b4t8qmeohqjor"]
 
-[ext_resource type="Script" uid="uid://cb8tdx8sptcv6" path="res://teamgamejam/Scripts/NPC Botak.gd" id="1_vd16p"]
+[ext_resource type="Script" uid="uid://cb8tdx8sptcv6" path="res://teamgamejam/Scripts/npc_botak.gd" id="1_vd16p"]
 [ext_resource type="Texture2D" uid="uid://cps0cvecx1upb" path="res://teamgamejam/Assets/Characters/NPCs/cowo_sma_botak_idle.png" id="2_2ybi3"]
 [ext_resource type="Texture2D" uid="uid://3yfr5qhg6m3" path="res://teamgamejam/Assets/Characters/Shadow.png" id="3_iertu"]
 

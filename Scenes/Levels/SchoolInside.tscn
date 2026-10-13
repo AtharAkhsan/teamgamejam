@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmigrrsyx0wab" path="res://teamgamejam/Scenes/Characters/player.tscn" id="4_lfiyo"]
 [ext_resource type="PackedScene" uid="uid://c1hyf42tpngtg" path="res://teamgamejam/Scenes/pintu.tscn" id="5_2d8d6"]
 [ext_resource type="PackedScene" uid="uid://dya8d2lj034jv" path="res://teamgamejam/Scenes/Levels/RuangBand.tscn" id="6_h81t2"]
-[ext_resource type="PackedScene" uid="uid://b4t8qmeohqjor" path="res://teamgamejam/Scenes/Characters/NPC Botak.tscn" id="7_pe336"]
+[ext_resource type="PackedScene" uid="uid://b4t8qmeohqjor" path="res://teamgamejam/Scenes/Characters/npc_botak.tscn" id="7_pe336"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h81t2"]
 texture = ExtResource("1_j26kd")

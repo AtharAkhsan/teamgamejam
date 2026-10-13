@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cysdrg5mi3koy"]
 
-[ext_resource type="Script" uid="uid://dbw8o0y8qs7u4" path="res://scripts/Minigame_2_game.gd" id="1"]
+[ext_resource type="Script" uid="uid://dbw8o0y8qs7u4" path="res://teamgamejam/Scripts/MINIGAME 2/Minigame_2_game.gd" id="1"]
 
 [node name="Game" type="Node2D" unique_id=1394155885]
 script = ExtResource("1")

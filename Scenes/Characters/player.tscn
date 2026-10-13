@@ -443,7 +443,3 @@ limit_enabled = false
 
 [node name="ToDoListUI" parent="CanvasLayer Quest" unique_id=1464974467 instance=ExtResource("15_h4iuc")]
 visible = false
-offset_left = -22.0
-offset_top = -11.0
-offset_right = -22.0
-offset_bottom = -11.0

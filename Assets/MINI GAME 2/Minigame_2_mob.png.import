@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rgske4nsyikc"
-valid=false
+path="res://.godot/imported/Minigame_2_mob.png-e5fad8cb02cb21d536e41dea56f22259.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/Minigame_2_mob.png"
+source_file="res://teamgamejam/Assets/MINI GAME 2/Minigame_2_mob.png"
+dest_files=["res://.godot/imported/Minigame_2_mob.png-e5fad8cb02cb21d536e41dea56f22259.ctex"]
 
 [params]
 

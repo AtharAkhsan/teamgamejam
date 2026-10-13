@@ -9,12 +9,12 @@ func _ready():
 
 # Dihubungkan dari signal Area2D -> body_entered
 func _on_area_2d_body_entered(body):
-	if body.name == "Player": 
+	if body is Player:
 		buka_pintu()
 
 # Dihubungkan dari signal Area2D -> body_exited
 func _on_area_2d_body_exited(body):
-	if body.name == "Player":
+	if body is Player:
 		tutup_pintu()
 
 # --- FUNGSI TERPISAH AGAR LEBIH RAPI ---

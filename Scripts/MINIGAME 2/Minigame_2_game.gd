@@ -16,6 +16,19 @@ const STAGES = [
 
 const MAX_DISTANCE: float = 20000.0
 
+# Minigame ini didesain untuk resolusi 1280x720, lalu di-scale ke viewport project
+const DESIGN_HEIGHT := 720.0
+
+# Setelah menang: lanjut ke cutscene MendaratSekolah, lalu masuk ke sekolah
+const NEXT_TIMELINE := "MendaratSekolah"
+const NEXT_SCENE := "res://teamgamejam/Scenes/Levels/SchoolOutside.tscn"
+
+const ASSET_DIR := "res://teamgamejam/Assets/MINI GAME 2/"
+const LunaScene := preload("res://teamgamejam/Scenes/MINIGAME 2/Minigame_2_luna.tscn")
+const ObstacleScene := preload("res://teamgamejam/Scenes/MINIGAME 2/Minigame_2_obstacle.tscn")
+const HudScript := preload("res://teamgamejam/Scripts/MINIGAME 2/Minigame_2_hud.gd")
+const MINIGAME_MUSIC := preload("res://teamgamejam/Assets/Audio/Songs/Minigame 2.mp3")
+
 var scroll_speed: float = 200.0
 var current_stage: int = 0
 var distance_traveled: float = 0.0
@@ -24,21 +37,18 @@ var max_health: int = 3
 var is_game_over: bool = false
 
 # Resources
-var obstacle_scene: PackedScene
-var obstacle_textures: Array = []
-# New individual obstacle assets
-var obstacle_individual_files = [
-	"res://assets/Minigame_2_ME_Singles_Vehicles_16x16_Ambulance_Left_1.png",
-	"res://assets/Minigame_2_ME_Singles_Vehicles_16x16_Car_Left_6.png",
-	"res://assets/Minigame_2_ME_Singles_Vehicles_16x16_Car_Left_13.png",
-	"res://assets/Minigame_2_ME_Singles_Vehicles_16x16_Car_Left_14.png",
-	"res://assets/Minigame_2_obstacle_car.png",
+var obstacle_textures: Array[Texture2D] = [
+	preload(ASSET_DIR + "Minigame_2_ME_Singles_Vehicles_16x16_Ambulance_Left_1.png"),
+	preload(ASSET_DIR + "Minigame_2_ME_Singles_Vehicles_16x16_Car_Left_6.png"),
+	preload(ASSET_DIR + "Minigame_2_ME_Singles_Vehicles_16x16_Car_Left_13.png"),
+	preload(ASSET_DIR + "Minigame_2_ME_Singles_Vehicles_16x16_Car_Left_14.png"),
+	preload(ASSET_DIR + "Minigame_2_obstacle_car.png"),
 ]
 
 # Sounds
-var sfx_hit: AudioStream
-var sfx_switch: AudioStream
-var sfx_gameover: AudioStream
+var sfx_hit: AudioStream = preload(ASSET_DIR + "Minigame_2_sfx_hit.wav")
+var sfx_switch: AudioStream = preload(ASSET_DIR + "Minigame_2_sfx_switch.wav")
+var sfx_gameover: AudioStream = preload(ASSET_DIR + "Minigame_2_sfx_gameover.wav")
 
 # Node references
 var luna_node: Area2D
@@ -54,63 +64,7 @@ var bg_sprites: Array = []
 var bg_width: float = 1280.0
 
 
-# Helper: load image from disk, auto-detecting format from file header bytes
-static func load_texture_from_file(path: String) -> ImageTexture:
-	var abs_path = ProjectSettings.globalize_path(path)
-	var file = FileAccess.open(abs_path, FileAccess.READ)
-	if not file:
-		push_warning("Could not open file: " + abs_path)
-		return null
-	var data = file.get_buffer(file.get_length())
-	file.close()
-
-	var img = Image.new()
-	var err: int = ERR_FILE_CORRUPT
-
-	# Detect actual format from magic header bytes
-	if data.size() >= 2 and data[0] == 0xFF and data[1] == 0xD8:
-		err = img.load_jpg_from_buffer(data)
-	elif data.size() >= 8 and data[0] == 0x89 and data[1] == 0x50 and data[2] == 0x4E and data[3] == 0x47:
-		err = img.load_png_from_buffer(data)
-	elif data.size() >= 4 and data[0] == 0x52 and data[1] == 0x49 and data[2] == 0x46 and data[3] == 0x46:
-		err = img.load_webp_from_buffer(data)
-	elif data.size() >= 3 and data[0] == 0x47 and data[1] == 0x49 and data[2] == 0x46:
-		# GIF - not supported natively, skip
-		push_warning("GIF format not supported: " + abs_path)
-		return null
-
-	if err != OK:
-		push_warning("Could not decode image: " + abs_path)
-		return null
-	return ImageTexture.create_from_image(img)
-
-
-# Helper: load WAV from disk
-static func load_wav_from_file(path: String) -> AudioStreamWAV:
-	var abs_path = ProjectSettings.globalize_path(path)
-	var file = FileAccess.open(abs_path, FileAccess.READ)
-	if not file:
-		return null
-	var data = file.get_buffer(file.get_length())
-	file.close()
-	if data.size() < 44:
-		return null
-	var stream = AudioStreamWAV.new()
-	var num_channels = data.decode_u16(22)
-	var sample_rate = data.decode_u32(24)
-	var bits_per_sample = data.decode_u16(34)
-	stream.mix_rate = sample_rate
-	stream.stereo = num_channels == 2
-	if bits_per_sample == 16:
-		stream.format = AudioStreamWAV.FORMAT_16_BITS
-	else:
-		stream.format = AudioStreamWAV.FORMAT_8_BITS
-	stream.data = data.slice(44)
-	return stream
-
-
 func _ready():
-	_load_resources()
 	_setup_background()
 	_setup_ground()
 	_setup_luna()
@@ -118,31 +72,19 @@ func _ready():
 	_setup_obstacles()
 	_setup_hud()
 	_setup_audio()
+	_fit_to_viewport()
+	MusicManager.play_music(MINIGAME_MUSIC)
 
 
-func _load_resources():
-	obstacle_scene = load("res://teamgamejam/Scenes/MINIGAME 2/Minigame_2_obstacle.tscn")
-
-	# Also load individual obstacle assets
-	for path in obstacle_individual_files:
-		var tex = load_texture_from_file(path)
-		if tex:
-			obstacle_textures.append(tex)
-	# Load sounds
-	sfx_hit = load_wav_from_file("res://teamgamejam/Assets/MINI GAME 2/Minigame_2_sfx_hit.wav")
-	sfx_switch = load_wav_from_file("res://teamgamejam/Assets/MINI GAME 2/Minigame_2_sfx_switch.wav")
-	sfx_gameover = load_wav_from_file("res://teamgamejam/Assets/MINI GAME 2/Minigame_2_sfx_gameover.wav")
+# Scale layout 1280x720 ke ukuran viewport project (1920x1080)
+func _fit_to_viewport():
+	var s := get_viewport_rect().size.y / DESIGN_HEIGHT
+	scale = Vector2(s, s)
+	hud_layer.scale = Vector2(s, s)
 
 
 func _setup_background():
-	var bg_tex = load_texture_from_file("res://teamgamejam/Assets/MINI GAME 2/Minigame_2_bg_city.png")
-	if not bg_tex:
-		var fallback = ColorRect.new()
-		fallback.color = Color(0.9, 0.5, 0.2)
-		fallback.size = Vector2(1280, 720)
-		fallback.z_index = -10
-		add_child(fallback)
-		return
+	var bg_tex: Texture2D = preload(ASSET_DIR + "Minigame_2_bg_city.png")
 
 	# Zoom into the street/storefront section of the city background
 	# bg_city.png is 2592x672; we crop to include the street and storefronts
@@ -178,7 +120,7 @@ func _setup_ground():
 
 
 func _setup_luna():
-	luna_node = load("res://scenes/Minigame_2_luna.tscn").instantiate()
+	luna_node = LunaScene.instantiate()
 	luna_node.position = Vector2(LUNA_X, LANE_Y[1])
 	luna_node.lane_positions = LANE_Y
 	luna_node.hit.connect(_on_luna_hit)
@@ -189,12 +131,11 @@ func _setup_luna():
 
 func _setup_mob():
 	mob_sprite = Sprite2D.new()
-	var mob_tex = load_texture_from_file("res://assets/Minigame_2_mob.png")
-	if mob_tex:
-		mob_sprite.texture = mob_tex
-		var target_h = 140.0
-		var s = target_h / mob_tex.get_height()
-		mob_sprite.scale = Vector2(s, s)
+	var mob_tex: Texture2D = preload(ASSET_DIR + "Minigame_2_mob.png")
+	mob_sprite.texture = mob_tex
+	var target_h = 140.0
+	var s = target_h / mob_tex.get_height()
+	mob_sprite.scale = Vector2(s, s)
 	mob_sprite.position = Vector2(MOB_X, LANE_Y[1])
 	mob_sprite.z_index = 2
 	add_child(mob_sprite)
@@ -217,11 +158,12 @@ func _setup_hud():
 	hud_layer.name = "HUD"
 	add_child(hud_layer)
 
-	hud_controller = Node2D.new()
+	hud_controller = HudScript.new()
 	hud_controller.name = "HUDController"
-	hud_controller.set_script(load("res://scripts/Minigame_2_hud.gd"))
 	hud_layer.add_child(hud_controller)
 	hud_controller.setup(max_health, current_stage)
+	hud_controller.restart_requested.connect(restart_game)
+	hud_controller.continue_requested.connect(_continue_story)
 
 
 func _setup_audio():
@@ -317,7 +259,7 @@ func _spawn_obstacles():
 		available.remove_at(idx)
 
 	for lane in blocked:
-		var obs = obstacle_scene.instantiate()
+		var obs = ObstacleScene.instantiate()
 		obs.position = Vector2(1400.0 + randf() * 100.0, LANE_Y[lane])
 		if obstacle_textures.size() > 0:
 			obs.set_obstacle_texture(obstacle_textures[randi() % obstacle_textures.size()])
@@ -362,3 +304,16 @@ func _trigger_game_won():
 
 func restart_game():
 	get_tree().reload_current_scene()
+
+
+# Dipanggil saat pemain klik KTP setelah menang
+func _continue_story():
+	hud_layer.visible = false
+	MusicManager.stop_music()
+	Dialogic.timeline_ended.connect(_on_story_timeline_ended, CONNECT_ONE_SHOT)
+	Dialogic.start(NEXT_TIMELINE)
+
+
+func _on_story_timeline_ended():
+	Dialogic.Audio.stop_all_channels()
+	SceneTransition.change_scene(NEXT_SCENE)

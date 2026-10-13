@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0psw6ai2qrul"]
 
-[ext_resource type="Script" uid="uid://drwwb0xld5gnu" path="res://scripts/Minigame_2_luna.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://jbff626u5ogh" path="res://assets/Minigame_2_lulu_dikejar.png" id="2_wn5x5"]
+[ext_resource type="Script" uid="uid://drwwb0xld5gnu" path="res://teamgamejam/Scripts/MINIGAME 2/Minigame_2_luna.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://jbff626u5ogh" path="res://teamgamejam/Assets/MINI GAME 2/Minigame_2_lulu_dikejar.png" id="2_wn5x5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gjum"]
 atlas = ExtResource("2_wn5x5")

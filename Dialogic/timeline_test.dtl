@@ -1,9 +1,0 @@
-[style name="VisualNovel"]
-[background arg="res://teamgamejam/Assets/Pictures/CUTSCENE 1.PNG" fade="2.0" wait="true"]
-Bulan...
-Di tengah kawah sunyi, batu-batu berbentuk aneh berserakan di sekitar. Di antara bebatuan, Luna, makhluk Monstrodoid, muncul dari dalam tanah. Bentuknya lucu dan kenyal seperti mochi luar angkasa, dengan mata besar yang menggemaskan.
-[background arg="#000000ff" fade="0.0"]
-[background arg="res://teamgamejam/Assets/Pictures/CUTSCENE 2.PNG" fade="0.5" wait="true"]
-CUTSCENE 2
-[background arg="res://teamgamejam/Assets/Pictures/CUTSCENE 3.PNG" fade="1.0"]
-CUTSCENE 3

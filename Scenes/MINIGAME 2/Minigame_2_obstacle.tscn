@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/Minigame_2_obstacle.gd" id="1"]
+[ext_resource type="Script" uid="uid://5doighs1uboq" path="res://teamgamejam/Scripts/MINIGAME 2/Minigame_2_obstacle.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="SubResource_1"]
 size = Vector2(50, 60)

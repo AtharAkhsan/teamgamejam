@@ -5,14 +5,6 @@ func _ready():
 	add_to_group("obstacles")
 
 
-func _load_tex(path: String) -> ImageTexture:
-	var abs_path = ProjectSettings.globalize_path(path)
-	var img = Image.new()
-	if img.load(abs_path) != OK:
-		return null
-	return ImageTexture.create_from_image(img)
-
-
 func set_obstacle_texture(tex: Texture2D):
 	if tex and has_node("Sprite2D"):
 		$Sprite2D.texture = tex
