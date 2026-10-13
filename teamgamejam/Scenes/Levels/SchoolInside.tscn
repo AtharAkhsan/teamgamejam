@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c1hyf42tpngtg" path="res://teamgamejam/Scenes/pintu.tscn" id="5_2d8d6"]
 [ext_resource type="PackedScene" uid="uid://dya8d2lj034jv" path="res://teamgamejam/Scenes/Levels/RuangBand.tscn" id="6_h81t2"]
 [ext_resource type="PackedScene" uid="uid://b4t8qmeohqjor" path="res://teamgamejam/Scenes/Characters/npc_botak.tscn" id="7_pe336"]
+[ext_resource type="Script" uid="uid://ced2i34bopquq" path="res://teamgamejam/Scripts/interactable.gd" id="8_book"]
+[ext_resource type="PackedScene" path="res://teamgamejam/Scenes/Controls/interact_prompt.tscn" id="9_prompt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h81t2"]
 texture = ExtResource("1_j26kd")
@@ -535,6 +537,9 @@ sources/0 = SubResource("TileSetAtlasSource_tkjky")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpekb"]
 size = Vector2(49, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_book"]
+size = Vector2(28, 20)
+
 [node name="School Inside" type="Node2D" unique_id=2049506564]
 script = ExtResource("1_yvq0h")
 metadata/_edit_vertical_guides_ = [216.0]
@@ -586,5 +591,20 @@ position = Vector2(216, 390)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor" unique_id=417871806]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_cpekb")
+
+[node name="RakBuku" type="Area2D" parent="."]
+position = Vector2(-65, -2)
+script = ExtResource("8_book")
+timeline = "BacaBuku"
+required_todo = "Belajar Bahasa Manusia"
+completes_todo = "Belajar Bahasa Manusia"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RakBuku"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_book")
+
+[node name="InteractPrompt" parent="RakBuku" instance=ExtResource("9_prompt")]
+visible = false
+position = Vector2(0, -40)
 
 [connection signal="body_entered" from="ExitDoor" to="." method="_on_exit_door_body_entered"]

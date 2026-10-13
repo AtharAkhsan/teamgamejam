@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cvrqxcdcmkurw" path="res://teamgamejam/Assets/Characters/NPCs/Nabila.png" id="1_fmyie"]
 [ext_resource type="Script" uid="uid://cpc1njkumxisv" path="res://teamgamejam/Scripts/npc_nabila.gd" id="1_ymmtw"]
 [ext_resource type="Texture2D" uid="uid://3yfr5qhg6m3" path="res://teamgamejam/Assets/Characters/Shadow.png" id="2_ymmtw"]
+[ext_resource type="PackedScene" path="res://teamgamejam/Scenes/Controls/interact_prompt.tscn" id="3_prompt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ffxk"]
 atlas = ExtResource("1_fmyie")
@@ -85,6 +86,10 @@ shape = SubResource("CapsuleShape2D_m684k")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chatDetection" unique_id=1713582121]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_5id86")
+
+[node name="InteractPrompt" parent="." instance=ExtResource("3_prompt")]
+visible = false
+position = Vector2(0, -13)
 
 [connection signal="body_exited" from="chatDetection" to="." method="_on_chat_detection_body_exited"]
 [connection signal="body_entered" from="chatDetection" to="." method="_on_chat_detection_body_entered"]

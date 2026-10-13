@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://bt0mu0koqun2t" path="res://teamgamejam/Scripts/MINIGAME 1/Minigame_1_game.gd" id="1_game"]
+[ext_resource type="Script" uid="uid://cst1ditlue2lq" path="res://teamgamejam/Scripts/MINIGAME 1/Minigame_1_background.gd" id="2_bg"]
+[ext_resource type="Script" uid="uid://dkk20buvvvu31" path="res://teamgamejam/Scripts/MINIGAME 1/Minigame_1_meteor.gd" id="3_meteor"]
+[ext_resource type="Script" uid="uid://jij2eussp67" path="res://teamgamejam/Scripts/MINIGAME 1/Minigame_1_hud.gd" id="4_hud"]
+
+[sub_resource type="Gradient" id="Gradient_trail"]
+offsets = PackedFloat32Array(0, 0.4, 1)
+colors = PackedColorArray(1, 0.95, 0.6, 1, 1, 0.55, 0.15, 0.9, 0.7, 0.15, 0.1, 0)
+
+[node name="Minigame1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_game")
+
+[node name="World" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+
+[node name="Viewport" type="SubViewport" parent="World"]
+handle_input_locally = false
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="Background" type="Node2D" parent="World/Viewport"]
+script = ExtResource("2_bg")
+
+[node name="Obstacles" type="Node2D" parent="World/Viewport"]
+
+[node name="Meteor" type="Node2D" parent="World/Viewport"]
+position = Vector2(240, 80)
+script = ExtResource("3_meteor")
+
+[node name="Trail" type="CPUParticles2D" parent="World/Viewport/Meteor"]
+show_behind_parent = true
+amount = 40
+lifetime = 0.45
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 110.0
+scale_amount_min = 1.5
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_trail")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("4_hud")
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]

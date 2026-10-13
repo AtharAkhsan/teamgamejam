@@ -1,0 +1,8 @@
+[style name="VisualNovel"]
+join Lulu center [animation="Fade In"]
+Lulu: "Kamus Bahasa Indonesia untuk Pemula"... Pas banget!
+Lulu: "Halo" untuk menyapa... "Apa kabar?" untuk menanyakan keadaan seseorang...
+Lulu: Oh! Jadi bukan "bakar apa", tapi "apa kabar"!
+Lulu: Pantas saja Nabila bingung...
+Lulu: Oke, sekarang aku siap ngobrol lagi dengan Nabila!
+leave Lulu

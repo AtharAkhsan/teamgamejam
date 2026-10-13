@@ -1,7 +1,7 @@
 extends Control
 
-# Setelah cutscene Intro ("ADA ALIENN!!! KEJAR DIAA!!!") langsung ke minigame kejar-kejaran
-const AFTER_INTRO_SCENE := "res://teamgamejam/Scenes/MINIGAME 2/Minigame_2_game.tscn"
+# Setelah cutscene Intro (Lulu meluncur jadi meteor, SCENE 07) langsung ke minigame jatuh ke Bumi
+const AFTER_INTRO_SCENE := "res://teamgamejam/Scenes/MINIGAME 1/Minigame_1_game.tscn"
 
 @onready var click_sfx = $clickSFX
 @onready var buttons: VBoxContainer = $VBoxContainer

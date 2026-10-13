@@ -30,9 +30,14 @@ directories/dch_directory={
 "Nabila": "res://teamgamejam/Dialogic/Characters/Nabila.dch"
 }
 directories/dtl_directory={
+"BacaBuku": "res://teamgamejam/Dialogic/Timelines/BacaBuku.dtl",
 "GreetNabila": "res://teamgamejam/Dialogic/Timelines/GreetNabila.dtl",
 "Intro": "res://teamgamejam/Dialogic/Timelines/Intro.dtl",
-"MendaratSekolah": "res://teamgamejam/Dialogic/Timelines/MendaratSekolah.dtl"
+"IntroBumi": "res://teamgamejam/Dialogic/Timelines/IntroBumi.dtl",
+"MendaratSekolah": "res://teamgamejam/Dialogic/Timelines/MendaratSekolah.dtl",
+"NabilaSapa": "res://teamgamejam/Dialogic/Timelines/NabilaSapa.dtl",
+"NabilaTeman": "res://teamgamejam/Dialogic/Timelines/NabilaTeman.dtl",
+"TibaDiSekolah": "res://teamgamejam/Dialogic/Timelines/TibaDiSekolah.dtl"
 }
 layout/style_directory={
 "": "res://teamgamejam/Dialogic/Styles/BubbleStyle.tres",

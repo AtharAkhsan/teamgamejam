@@ -1,0 +1,10 @@
+[style name="VisualNovel"]
+join Lulu center [animation="Fade In"]
+join Nabila (Default) center [animation="Fade In"]
+Lulu: Halo! Apa kabar?
+Nabila: Eh, kamu yang tadi... Kabarku baik kok! Kamu murid baru, ya?
+Lulu: Iya! Namaku Lulu. Mau jadi temanku?
+Nabila: Boleh! Aku Nabila. Salam kenal, Lulu!
+leave Nabila
+Lulu: Yeay! Teman pertamaku di Bumi!
+[signal arg="nabila_teman"]

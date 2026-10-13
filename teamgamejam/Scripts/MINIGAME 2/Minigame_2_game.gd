@@ -4,6 +4,8 @@ extends Node2D
 const LANE_Y := [380.0, 460.0, 530.0]
 const LUNA_X := 200.0
 const MOB_X := 50.0
+const MOB_HEIGHT := 140.0
+const MOB_STEPS_PER_SEC := 3.5 # pada kecepatan stage pertama
 
 # 5 difficulty stages
 const STAGES = [
@@ -52,7 +54,10 @@ var sfx_gameover: AudioStream = preload(ASSET_DIR + "Minigame_2_sfx_gameover.wav
 
 # Node references
 var luna_node: Area2D
+var mob: Node2D
 var mob_sprite: Sprite2D
+var mob_base_scale := 1.0
+var mob_step_time := 0.0
 var obstacle_container: Node2D
 var spawn_timer: Timer
 var hud_layer: CanvasLayer
@@ -65,6 +70,7 @@ var bg_width: float = 1280.0
 
 
 func _ready():
+	_crop_obstacle_textures()
 	_setup_background()
 	_setup_ground()
 	_setup_luna()
@@ -74,6 +80,22 @@ func _ready():
 	_setup_audio()
 	_fit_to_viewport()
 	MusicManager.play_music(MINIGAME_MUSIC)
+
+
+# Potong padding transparan tiap gambar mobil, supaya semua mobil diskalakan
+# berdasarkan tinggi badan mobilnya (bukan tinggi file gambarnya)
+func _crop_obstacle_textures():
+	var cropped: Array[Texture2D] = []
+	for tex in obstacle_textures:
+		var img := tex.get_image()
+		if img == null:
+			cropped.append(tex)
+			continue
+		var atlas := AtlasTexture.new()
+		atlas.atlas = tex
+		atlas.region = Rect2(img.get_used_rect())
+		cropped.append(atlas)
+	obstacle_textures = cropped
 
 
 # Scale layout 1280x720 ke ukuran viewport project (1920x1080)
@@ -129,16 +151,42 @@ func _setup_luna():
 	add_child(luna_node)
 
 
+# Mob = container di posisi kaki (ikut lajur Luna) + sprite yang dianimasikan lari
+# lewat kode, karena Minigame_2_mob.png cuma 1 frame
 func _setup_mob():
+	mob = Node2D.new()
+	mob.position = Vector2(MOB_X, LANE_Y[1] + MOB_HEIGHT / 2.0)
+	mob.z_index = 2
+	add_child(mob)
+
+	# Debu di kaki (ditambahkan duluan supaya tergambar di belakang sprite)
+	var dust := CPUParticles2D.new()
+	dust.amount = 18
+	dust.lifetime = 0.5
+	dust.position = Vector2(10, -6)
+	dust.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	dust.emission_rect_extents = Vector2(40, 4)
+	dust.direction = Vector2(-1, -0.4)
+	dust.spread = 25.0
+	dust.gravity = Vector2(0, 80)
+	dust.initial_velocity_min = 50.0
+	dust.initial_velocity_max = 110.0
+	dust.scale_amount_min = 4.0
+	dust.scale_amount_max = 8.0
+	var ramp := Gradient.new()
+	ramp.set_color(0, Color(0.85, 0.75, 0.6, 0.7))
+	ramp.set_color(1, Color(0.85, 0.75, 0.6, 0.0))
+	dust.color_ramp = ramp
+	mob.add_child(dust)
+
 	mob_sprite = Sprite2D.new()
 	var mob_tex: Texture2D = preload(ASSET_DIR + "Minigame_2_mob.png")
 	mob_sprite.texture = mob_tex
-	var target_h = 140.0
-	var s = target_h / mob_tex.get_height()
-	mob_sprite.scale = Vector2(s, s)
-	mob_sprite.position = Vector2(MOB_X, LANE_Y[1])
-	mob_sprite.z_index = 2
-	add_child(mob_sprite)
+	# Pivot di kaki, supaya squash/condong terlihat menapak tanah
+	mob_sprite.offset = Vector2(0, -mob_tex.get_height() / 2.0)
+	mob_base_scale = MOB_HEIGHT / mob_tex.get_height()
+	mob_sprite.scale = Vector2(mob_base_scale, mob_base_scale)
+	mob.add_child(mob_sprite)
 
 
 func _setup_obstacles():
@@ -226,9 +274,20 @@ func _move_obstacles(delta: float):
 
 
 func _animate_mob(delta: float):
-	if mob_sprite:
-		mob_sprite.position.y = lerp(mob_sprite.position.y, luna_node.position.y, 3.0 * delta)
-		mob_sprite.position.x = MOB_X + sin(Time.get_ticks_msec() * 0.005) * 8.0
+	if not mob:
+		return
+	# Ikuti lajur Luna
+	mob.position.y = lerp(mob.position.y, luna_node.position.y + MOB_HEIGHT / 2.0, 3.0 * delta)
+	mob.position.x = MOB_X + sin(Time.get_ticks_msec() * 0.005) * 8.0
+
+	# Animasi lari: tiap langkah melompat kecil, squash saat mendarat, goyang kiri-kanan.
+	# Langkah makin cepat seiring kecepatan scroll.
+	mob_step_time += delta * MOB_STEPS_PER_SEC * scroll_speed / STAGES[0]["speed"]
+	var hop := sin(fmod(mob_step_time, 1.0) * PI) # 0 -> 1 -> 0 tiap langkah
+	var squash := pow(1.0 - hop, 3.0)
+	mob_sprite.position.y = -hop * 10.0
+	mob_sprite.scale = Vector2(1.0 + squash * 0.08, 1.0 - squash * 0.08) * mob_base_scale
+	mob_sprite.rotation = 0.06 + sin(mob_step_time * PI) * 0.05
 
 
 func _restart_spawn_timer():
@@ -316,4 +375,5 @@ func _continue_story():
 
 func _on_story_timeline_ended():
 	Dialogic.Audio.stop_all_channels()
+	GameManager.arriving_at_school = true
 	SceneTransition.change_scene(NEXT_SCENE)

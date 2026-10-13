@@ -1,0 +1,6 @@
+[style name="VisualNovel"]
+join Lulu center [animation="Fade In"]
+Lulu: Wah... jadi ini sekolah manusia?
+Lulu: Kalau mau tinggal di Bumi, aku harus punya teman dulu.
+leave Lulu
+(Tekan Q untuk melihat To-Do List)

@@ -8,7 +8,7 @@ func _ready():
 func set_obstacle_texture(tex: Texture2D):
 	if tex and has_node("Sprite2D"):
 		$Sprite2D.texture = tex
-		var target_h = 70.0
+		var target_h = 56.0 # tinggi badan mobil (texture sudah di-crop ke isinya)
 		var s = target_h / tex.get_height()
 		$Sprite2D.scale = Vector2(s, s)
 		# Adjust collision shape to match

@@ -37,12 +37,3 @@ audio "res://teamgamejam/Assets/Audio/SFX/METEOR SCENE 07.mp3.wav" [volume="0.0"
 [wait time="2.0"]
 [background arg="res://teamgamejam/Assets/Pictures/SCENE 07.PNG" fade="1.0" wait="true"]
 wrrr... (Suara meteor jatuh)
-[clear time="0.5" step="false" portraits="false" music="false" background="false" positions="false" style="false"]
-[background arg="#000000ff" fade="1.5" wait="true"]
-[background arg="res://teamgamejam/Assets/Pictures/SCENE 08 - A.PNG" fade="1.0" wait="true"]
-audio "res://teamgamejam/Assets/Audio/SFX/SCENE 9 LANTAI PECAH.mp3.wav" [volume="-10.0"]
-[background arg="res://teamgamejam/Assets/Pictures/SCENE 09.PNG" fade="1.0" wait="true"]
-[background arg="#000000ff" fade="1.5" wait="true"]
-[background arg="res://teamgamejam/Assets/Pictures/SCENE 10.PNG" fade="1.0" wait="true"]
-ADA ALIENN!!! KEJAR DIAA!!!!!!!!!
-[signal arg="Intro_Ends"]

@@ -2,6 +2,23 @@
 
 [ext_resource type="Script" uid="uid://durbt8ryy3aef" path="res://teamgamejam/Scripts/to_do_list_ui.gd" id="1_todo"]
 [ext_resource type="Texture2D" uid="uid://bhe3ilgbd6qsx" path="res://teamgamejam/Assets/todo.png" id="2_paper"]
+[ext_resource type="FontFile" uid="uid://c6gbmx5jpcwkp" path="res://teamgamejam/Assets/Fonts/PIXEARG_.TTF" id="3_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toast"]
+content_margin_left = 28.0
+content_margin_top = 14.0
+content_margin_right = 28.0
+content_margin_bottom = 14.0
+bg_color = Color(0.1, 0.06, 0.12, 0.85)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.88, 0.35, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="ToDoListUI" type="Control" unique_id=1464974467]
 layout_mode = 3
@@ -32,3 +49,23 @@ offset_top = 130.0
 offset_right = 304.0
 offset_bottom = 450.0
 theme_override_constants/separation = 12
+
+[node name="Toast" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -420.0
+offset_top = 40.0
+offset_right = 420.0
+offset_bottom = 104.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toast")
+
+[node name="Label" type="Label" parent="Toast"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1

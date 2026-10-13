@@ -442,4 +442,3 @@ limit_enabled = false
 [node name="CanvasLayer Quest" type="CanvasLayer" parent="." unique_id=1582422673]
 
 [node name="ToDoListUI" parent="CanvasLayer Quest" unique_id=1464974467 instance=ExtResource("15_h4iuc")]
-visible = false

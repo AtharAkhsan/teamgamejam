@@ -1,0 +1,4 @@
+[style name="VisualNovel"]
+join Nabila (Default) center [animation="Fade In"]
+Nabila: Hai, Lulu! Sudah keliling sekolah?
+leave Nabila
